@@ -1,0 +1,79 @@
+version: "3.9"
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+  ev:
+    build: ./testbedEV
+    ports:
+      - "8000:8000"
+    environment:
+      - API_PORT=
+    depends_on:
+      - evse
+  evse:
+    build: ./testbedEVSE
+    ports:
+      - "8010:8000"
+    environment:
+      - CPO_URL=ws://step_05-%s-1:%d/ocpp/"
+    depends_on:
+      - cpo_a
+      - cpo_b
+      - cpo_c
+      - cpo_d
+  cpo_a:
+    build: ./testbedCPO
+    ports:
+      - "8020:8000"
+      - "8021:8021"
+    environment:
+      - CPO_PORT=8021
+      - VTN_URL=http://step_05-dso-1:8091/OpenADR2/Simple/2.0b
+      - VEN_NAME=PEA_A
+    depends_on:
+      - dso
+  cpo_b:
+    build: ./testbedCPO
+    ports:
+      - "8030:8000"
+      - "8031:8031"
+    environment:
+      - CPO_PORT=8031
+      - VTN_URL=http://step_05-dso-1:8091/OpenADR2/Simple/2.0b
+      - VEN_NAME=PEA_B
+    depends_on:
+      - dso
+  cpo_c:
+    build: ./testbedCPO
+    ports:
+      - "8040:8000"
+      - "8041:8041"
+    environment:
+      - CPO_PORT=8041
+      - VTN_URL=http://step_05-dso-1:8091/OpenADR2/Simple/2.0b
+      - VEN_NAME=PEA_C
+    depends_on:
+      - dso
+  cpo_d:
+    build: ./testbedCPO
+    ports:
+      - "8050:8000"
+      - "8051:8051"
+    environment:
+      - CPO_PORT=8051
+      - VTN_URL=http://step_05-dso-1:8091/OpenADR2/Simple/2.0b
+      - VEN_NAME=PEA_D
+    depends_on:
+      - dso
+  dso:
+    build: ./testbedDSO
+    ports:
+      - "8090:8000"
+      - "8091:8091"
+    environment:
+      - VTN_ID=PEA
+      - VTN_PORT=8091
+    depends_on:
+      - mongo

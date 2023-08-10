@@ -1,0 +1,17 @@
+evse_id, cpo_id, port
+PEA_A_1, cpo_a, 8021
+PEA_A_2, cpo_a, 8021
+PEA_A_3, cpo_a, 8021
+PEA_A_4, cpo_a, 8021
+PEA_B_1, cpo_b, 8031
+PEA_B_2, cpo_b, 8031
+PEA_B_3, cpo_b, 8031
+PEA_B_4, cpo_b, 8031
+PEA_C_1, cpo_c, 8041
+PEA_C_2, cpo_c, 8041
+PEA_C_3, cpo_c, 8041
+PEA_C_4, cpo_c, 8041
+PEA_D_1, cpo_d, 8051
+PEA_D_2, cpo_d, 8051
+PEA_D_3, cpo_d, 8051
+PEA_D_4, cpo_d, 8051

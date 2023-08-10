@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pydantic
+aiosqlite
+pandas
+openleadr
+prophet
+python-dotenv

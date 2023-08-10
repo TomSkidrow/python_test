@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pydantic
+openleadr
+websockets
+pandas
+ocpp
+python-dotenv
